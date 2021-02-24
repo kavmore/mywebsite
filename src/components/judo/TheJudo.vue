@@ -26,6 +26,10 @@
 </template>
 
 <style scoped>
+.container-fluid {
+  height: 100vh;
+}
+
 #judo_image {
   margin-right: 30px;
   padding-right: 30px;

@@ -147,6 +147,7 @@ export default {
 </script>
 
 <style scoped>
+
 #sidebar-wrapper {
   position: absolute;
   width: 300px;
@@ -185,10 +186,6 @@ export default {
 #sidebar-wrapper .dropdown-menu a:hover {
   background-color: #fff;
   color: #000;
-}
-
-code {
-    color: #000;
 }
 
 button {
@@ -238,5 +235,9 @@ button.active .line1 {
 button.active .line2 {
     transform: rotate(45deg) translateX(-1.3px) translateY(-8px);
     transition: transform 0.5s linear;
+}
+
+code {
+  color: #000;
 }
 </style>

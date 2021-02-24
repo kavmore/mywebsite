@@ -1,5 +1,5 @@
 <template>
-    <router-link class="drop-item" to="/t1">
+    <router-link class="drop-item" to="https://javadoc.lwjgl.org/overview-summary.html">
         <slot>{{ packageName }}</slot>
     </router-link>
 </template>

@@ -2,7 +2,7 @@
     <div class="card">
         <h6>{{title}}</h6>
         <pre>
-            <code class="code">{{ sqlCode }}</code>
+            <code class="code user-select-all">{{ sqlCode }}</code>
         </pre>
     </div>
 </template>

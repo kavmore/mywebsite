@@ -156,38 +156,38 @@
             <div class="card">
             <h6>选择名字和出生日列，默认按照升序排列。</h6>
             <pre>
-                <code class="code">mysql> SELECT name, birth FROM pet ORDER BY birth;</code>
-                <code class="code">mysql> SELECT name, birth FROM pet WHERE MONTH(birth) = MOD(MONTH(CURDATE()), 12) + 1;</code>
+                <code class="code user-select-all">mysql> SELECT name, birth FROM pet ORDER BY birth;</code>
+                <code class="code user-select-all">mysql> SELECT name, birth FROM pet WHERE MONTH(birth) = MOD(MONTH(CURDATE()), 12) + 1;</code>
             </pre>
             </div>
 
             <div class="card">
             <h6>查找以b开头的名字</h6>
             <pre>
-                <code class="code">mysql> SELECT * FROM pet WHERE name LIKE 'b%';</code>
-                <code class="code">mysql> SELECT * FROM pet WHERE REGEXP_LIKE(name,'^b')</code>
+                <code class="code user-select-all">mysql> SELECT * FROM pet WHERE name LIKE 'b%';</code>
+                <code class="code user-select-all">mysql> SELECT * FROM pet WHERE REGEXP_LIKE(name,'^b')</code>
             </pre>
             </div>
             <div class="card">
             <h6>查找以fy结尾的名称</h6>
             <pre>
-                <code class="code">mysql> SELECT * FROM pet WHERE name LIKE '%fy';</code>
-                <code class="code">mysql> SELECT * FROM pet WHERE REGEXP_LIKE(name,'fy$')</code>
+                <code class="code user-select-all">mysql> SELECT * FROM pet WHERE name LIKE '%fy';</code>
+                <code class="code user-select-all">mysql> SELECT * FROM pet WHERE REGEXP_LIKE(name,'fy$')</code>
             </pre>
             </div>
             <div class="card">
             <h6>查找包含w的名称</h6>
             <pre>
-                <code class="code">mysql> SELECT * FROM pet WHERE name LIKE '%w%';</code>
-                <code class="code">mysql> SELECT * FROM pet WHERE REGEXP_LIKE(name,'w')</code>
+                <code class="code user-select-all">mysql> SELECT * FROM pet WHERE name LIKE '%w%';</code>
+                <code class="code user-select-all">mysql> SELECT * FROM pet WHERE REGEXP_LIKE(name,'w')</code>
             </pre>
             </div>
             <div class="card">
             <h6>查找正好包含五个字符的名字</h6>
             <pre>
-                <code class="code">mysql> SELECT * FROM pet WHERE name LIKE '_____'</code>
-                <code class="code">mysql> SELECT * FROM pet WHERE REGEXP_LIKE(name,'^.....$')</code>
-                <code class="code">mysql> SELECT * FROM pet WHERE REGEXP_LIKE(name,'^{5}$')</code>
+                <code class="code user-select-all">mysql> SELECT * FROM pet WHERE name LIKE '_____'</code>
+                <code class="code user-select-all">mysql> SELECT * FROM pet WHERE REGEXP_LIKE(name,'^.....$')</code>
+                <code class="code user-select-all">mysql> SELECT * FROM pet WHERE REGEXP_LIKE(name,'^{5}$')</code>
             </pre>
             </div>
         </div>

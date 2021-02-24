@@ -1,14 +1,17 @@
 <template>
-    <nav class="navbar navbar-expand-xl bg-navbar fixed-up d-flex justify-content-center align-items-center">
+    <nav class="navbar navbar-expand-md bg-navbar fixed-up d-flex justify-content-center align-items-center">
+        <!-- <div id="sidebar">
+          <the-side-bar></the-side-bar>
+        </div> -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <router-link to="/index.html" class="nav-link text-white">Home</router-link>
+                <router-link to="/" class="nav-link text-white">Home</router-link>
             </li>
             <li class="nav-item">
                 <router-link to="/java" class="nav-link text-white">Java</router-link>
             </li>
             <li class="nav-item">
-                <a href="C++.html" class="nav-link text-white">C++</a>
+                <router-link to="/C" class="nav-link text-white">C++</router-link>
             </li>
             <li class="nav-item">
                 <router-link to="/mysql" class="nav-link text-white">MySQL</router-link>
@@ -17,10 +20,7 @@
                 <router-link to="/judo" class="nav-link text-white">柔道</router-link>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link text-white">Math</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link text-white">Forum</a>
+                <router-link to="/math" class="nav-link text-white">Math</router-link>
             </li>
             <li class="nav-item">
                 <div :class="{search : true, active: toggle}">
@@ -31,11 +31,13 @@
                 </div>
             </li>
         </ul>
-        <button type="button" class="btn btn-outline-light pl-xl-4 pr-xl-4" id="login">登录</button>
+        <button type="button" class="btn btn-outline-light pl-xl-4 pr-xl-4" id="login" @click="userLogin">登录</button>
     </nav>
 </template>
 
 <script>
+// import TheSideBar from './TheSideBar.vue'
+
 export default {
     data(){
         return{
@@ -45,16 +47,33 @@ export default {
     methods:{
         toggleSearch(){
             this.toggle = !this.toggle;
+        },
+        userLogin(){
+          this.$router.push('/user');
         }
     },
+    components:{
+        // TheSideBar
+    }
 }
 </script>
 
 <style scoped>
+[v-cloak] {
+ display: none;
+}
+
+#sidebar {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
 /* 导航栏 */
 .navbar {
   background-color: #2f2f2f;
   padding: 0;
+  position: relative;
 }
 
 .navbar a {
@@ -141,6 +160,10 @@ export default {
   transform: translateX(198px);
 }
 
-
+@media (max-width: 768px){
+  li.nav-item{
+    display: none;
+  }
+}
 
 </style>
