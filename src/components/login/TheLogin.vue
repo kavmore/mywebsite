@@ -1,64 +1,105 @@
 <template>
-    <base-login-card class="card">
-        <template #welcome>
-            <h6>欢迎</h6>
-        </template>
-        <template #input>
-            <input type="email" name="email" id="emailInput" placeholder="EmailAddress"/>
-            <input type="password" name="password" id="passwordInput" placeholder="Password"/>
-        </template>
-        <template #checkboxLabel>
-            <div style="display: grid; grid-template-columns: 1fr 1fr;" id="rememberMe">
-                <input type="checkbox" name="checkbox" id="checkbox">
-                <label for="checkbox">记住我</label>
-            </div>
-        </template>
-        <template #forgotPass>
-            <label>忘记密码？</label>
-        </template>
-        <template #btntype>
-            <button type="submit">登录</button>
-        </template>
-    </base-login-card>
+  <base-submit-form class="card" @submit.prevent="submitForm">
+    <template #welcome> 欢迎 </template>
+    <template #input>
+      <input
+        type="email"
+        name="email"
+        id="emailInput"
+        placeholder="EmailAddress"
+        v-model.trim="emailAddress"
+        @blur="validateEmail"
+        :class="{ inputError: emailValidity === 'invalid' }"
+      />
+      <p v-if="emailValidity === 'invalid'" style="margin-bottom: 0px">
+        您需要输入有效的邮箱
+      </p>
+      <input
+        type="password"
+        name="password"
+        id="passwordInput"
+        placeholder="Password"
+        v-model.number="password"
+        ref="target"
+        @blur="validatePass"
+        :class="{ inputError: passValidity === 'invalid' }"
+      />
+      <p v-if="passValidity === 'invalid'" style="margin-bottom: 0px">
+        您需要输入密码
+      </p>
+    </template>
+    <template #checkboxLabel>
+      <div
+        id="checklabel"
+        style="margin: 10px; display: grid; grid-template-columns: 1fr 1fr"
+      >
+        <input type="checkbox" name="rememberMe" id="checkbox" />
+        <label for="checkbox">记住我</label>
+      </div>
+    </template>
+    <template #forgotPass>
+      <label>忘记密码？</label>
+    </template>
+    <template #btntype> 登录 </template>
+  </base-submit-form>
 </template>
 
 <script>
-import BaseLoginCard from '../UI/BaseLoginCard';
+import BaseSubmitForm from "../UI/BaseSubmitForm.vue";
 
 export default {
-    components:{BaseLoginCard}
-}
+  components: { BaseSubmitForm },
+  data() {
+    return {
+      emailAddress: "",
+      password: "",
+      emailValidity: "",
+      passValidity: "",
+    };
+  },
+  methods: {
+    submitForm() {
+      // console.log('email is:' + this.emailAddress);
+      // console.log('password is' + this.password + typeof this.password);
+      // console.log('ref password is' + this.$refs.target.value + typeof this.$refs.target.value);
+    },
+    validateEmail() {
+      if (this.emailAddress === "") {
+        this.emailValidity = "invalid";
+      } else {
+        this.emailValidity = "valid";
+      }
+    },
+    validatePass() {
+      if (this.password === "") {
+        this.passValidity = "invalid";
+      } else {
+        this.passValidity = "valid";
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
 .card {
-    width: 400px;
-}
-
-button {
-  border: 1px solid #0076bb;
-  background-color: #0076bb;
-  color: white;
-  cursor: pointer;
-  padding: 0.75rem 2rem;
-  border-radius: 30px;
-  margin: 10px;
+  max-width: 400px;
 }
 
 #checkbox {
-    margin: auto;
+  margin: auto;
 }
 
 label {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 input {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
-#rememberMe {
-    margin: 10px;
+input.inputError {
+  border-color: red;
 }
 </style>
 
